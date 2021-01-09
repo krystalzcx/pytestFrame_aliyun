@@ -1,0 +1,10 @@
+{
+  "test_wework.py": true,
+  "testcase/test_demo.py": true,
+  "testcase/test_groupchat.py": true,
+  "testcase/test_groupchat.py::TestWework::()": true,
+  "testcase/test_tag.py": true,
+  "testcase/test_tag.py::TestTag::()::test_add": true,
+  "testcase/test_tag.py::TestTag::()::test_delete": true,
+  "testcase/test_wework.py": true
+}
