@@ -22,8 +22,10 @@ class BaseApi:
             r=self.r.json()
         return jsonpath(r,path)
 
+    #封装yaml文件的加载
+    #——> lsit是指定返回类型是list
     @classmethod
-    def yaml_load(self,path):
+    def yaml_load(self,path)->list:
         with open(path) as f:
             return yaml.safe_load(f)
 

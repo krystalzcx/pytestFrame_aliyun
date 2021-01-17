@@ -3,16 +3,19 @@ import os
 from jsonpath import jsonpath
 sys.path.append(os.getcwd())
 from api.tag import Tag
+from api.base_api import BaseApi
 import pytest
 
 
 class TestTag:
+    data=BaseApi.yaml_load("/root/myworkspace/pytestFrame_aliyun/wework/testcase/test_tag.data.yaml")
+
     @classmethod
     def setup_class(cls):
         cls.tag=Tag()
         #遍历删除测试数据
         cls.reset()
-        # cls.data=cls.tag.yaml_load("")
+       
 
 
     def test_get(self):
@@ -20,15 +23,18 @@ class TestTag:
         assert r['errcode']==0
         # print("tag 打印")
         # print(jsonpath(r,"$..tag[?(@.name=='demo3')]")[0]["id"])
+
     
     def test_add(self):
         r=self.tag.add('demo_1')
         assert r['errcode']==0
 
     #此用例有问题，始终返回41017
-    @pytest.mark.parametrize("name",[
-        "demo1","中文","123"," ","*","😊",""
-    ])
+    # @pytest.mark.parametrize("name",[
+    #     "demo1","中文","123"," ","*","😊",""
+    # ])
+    # data["test_delete"]取的是yaml文件中的key-value
+    @pytest.mark.parametrize("name",data["test_delete"])
     def test_delete(self,name):
         # name='demo3'
         r=self.tag.get()
