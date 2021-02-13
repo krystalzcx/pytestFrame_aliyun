@@ -17,13 +17,17 @@ class TestTag:
         cls.reset()
        
 
-
     def test_get(self):
         r=self.tag.get()
         assert r['errcode']==0
         # print("tag 打印")
         # print(jsonpath(r,"$..tag[?(@.name=='demo3')]")[0]["id"])
 
+    def test_get_api(self):
+        r=self.tag.get_api()
+        assert r['errcode']==0
+        # print("tag 打印")
+        # print(jsonpath(r,"$..tag[?(@.name=='demo3')]")[0]["id"])
     
     def test_add(self):
         r=self.tag.add('demo_1')

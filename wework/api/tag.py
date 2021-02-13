@@ -4,6 +4,14 @@ import requests
 
 class Tag(WeWork):
     #secret='g6HTdjCLPYqGL54RtfbIn1oGZcKw9SOehw9CaH1XelM'
+    def __init__(self):
+        self.data=self.api_load("/root/myworkspace/pytestFrame_aliyun/wework/api/tag.api.yaml")
+
+    def get_api(self):
+        return self.api_send(self.data['get'])
+
+
+
     def get(self):
         url='https://qyapi.weixin.qq.com/cgi-bin/externalcontact/get_corp_tag_list'
         r=requests.post(

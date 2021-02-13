@@ -1,7 +1,9 @@
+from _pytest.mark import param
 import yaml
 import logging
 import json
 from jsonpath import jsonpath
+import requests
 from requests import request
 
 
@@ -29,8 +31,20 @@ class BaseApi:
         with open(path) as f:
             return yaml.safe_load(f)
 
-    #todo:封装类似HttpRunner这样的数据驱动框架
-    def steps(self,path):
-        with open(path) as f:
-            steps: list[dict] = yaml.safe_load(f)
-            # request: Request = None
+    #读取yaml文件内容
+    def api_load(self,path):
+        return self.yaml_load(path)
+
+    #把读取到的内容拆解成参数
+    def api_send(self,req:dict):
+        req['params']['access_token']=self.get_token()
+        #此种方法用于请求方式未知的的情况
+        r=requests.request(
+            req["method"],
+            url=req['url'],
+            params=req['params'],
+            json=req['json']
+        )
+        self.format(r)
+        return r.json()
+

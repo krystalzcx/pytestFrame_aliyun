@@ -6,5 +6,12 @@
   "testcase/test_tag.py": true,
   "testcase/test_tag.py::TestTag::()::test_add": true,
   "testcase/test_tag.py::TestTag::()::test_delete": true,
+  "testcase/test_tag.py::TestTag::()::test_delete[ ]": true,
+  "testcase/test_tag.py::TestTag::()::test_delete[*]": true,
+  "testcase/test_tag.py::TestTag::()::test_delete[123]": true,
+  "testcase/test_tag.py::TestTag::()::test_delete[\\U0001f60a]": true,
+  "testcase/test_tag.py::TestTag::()::test_delete[\\u4e2d\\u6587]": true,
+  "testcase/test_tag.py::TestTag::()::test_delete[]": true,
+  "testcase/test_tag.py::TestTag::()::test_delete[demo1]": true,
   "testcase/test_wework.py": true
 }
